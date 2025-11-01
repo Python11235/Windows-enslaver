@@ -6,11 +6,11 @@ CONTROLLER SETUP (Your Machine)
 
 1. SET STATIC IP FOR YOUR LAPTOP:
    Open Command Prompt as Administrator and run:
-   netsh interface ip set address "WLAN" static 192.168.0.100 255.255.255.0 192.168.0.1
-   netsh interface ip set dns "WLAN" static 8.8.8.8
+   ``netsh interface ip set address "WLAN" static 192.168.0.100 255.255.255.0 192.168.0.1``
+   ``netsh interface ip set dns "WLAN" static 8.8.8.8``
 
 2. OPEN FIREWALL PORT:
-   netsh advfirewall firewall add rule name="RenderFarm" dir=in action=allow protocol=TCP localport=8888
+   ``netsh advfirewall firewall add rule name="[you decide]" dir=in action=allow protocol=TCP localport=8888``
 
 3. PORT FORWARDING ON ROUTER:
    - Access router: http://192.168.0.1
@@ -25,7 +25,7 @@ CONTROLLER SETUP (Your Machine)
      Status: Enabled
 
 4. START CONTROLLER:
-   python Unlimited_cpu_controller.py (im sorry for the name it was 10pm)
+   ``python Unlimited_cpu_controller.py`` (im sorry for the name it was 10pm)
 
 WORKER SETUP (Render Nodes)
 ---------------------------
@@ -37,12 +37,12 @@ WORKER SETUP (Render Nodes)
    - Auto-starts on boot
 
 2. VERIFY WORKER RUNNING:
-   tasklist | findstr python
+   ``tasklist | findstr python``
 
 USING THE CONTROLLER
 --------------------
 
-Start controller: python controller.py
+Start controller: ``python Unlimited_cpu_controller.py``
 
 Menu Options:
 1. Connect to specific node - Interactive PowerShell
@@ -52,25 +52,25 @@ Menu Options:
 5. Exit
 
 Example Commands:
-Get-Process | Where-Object {$_.ProcessName -like "*blender*"}
-Get-WmiObject Win32_Processor | Measure-Object -Property LoadPercentage -Average
-hostname
-systeminfo | findstr /C:"Total Physical Memory"
+``Get-Process | Where-Object {$_.ProcessName -like "*blender*"}``
+``Get-WmiObject Win32_Processor | Measure-Object -Property LoadPercentage -Average``
+``hostname``
+``systeminfo | findstr /C:"Total Physical Memory"``
 
 MANAGEMENT COMMANDS
 -------------------
 
-Check worker status: tasklist | findstr python
-Stop worker: taskkill /f /im python.exe
-Restart worker: taskkill /f /im python.exe && timeout 2 && start worker_agent.py
+Check worker status: ``tasklist | findstr python``
+Stop worker: ``taskkill /f /im python.exe``
+Restart worker: ``taskkill /f /im python.exe && timeout 2 && start worker_agent.py``
 
 TROUBLESHOOTING
 ---------------
 
-Test port: telnet 84.115.217.201 8888
+Test port: ``telnet 84.115.217.201 8888``
 Online port test: www.yougetsignal.com/tools/open-ports/
 
-Worker config location: %LOCALAPPDATA%\RenderFarmWorker\worker_config.json
+Worker config location: ``%LOCALAPPDATA%\RenderFarmWorker\worker_config.json``
 
 If workers won't connect:
 1. Verify controller is running
