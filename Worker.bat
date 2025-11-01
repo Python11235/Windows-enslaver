@@ -20,7 +20,7 @@ if not exist "%APP_DATA%" mkdir "%APP_DATA%" >nul 2>&1
 if not exist "%APP_DATA%\python" mkdir "%APP_DATA%\python" >nul 2>&1
 if not exist "%APP_DATA%\scripts" mkdir "%APP_DATA%\scripts" >nul 2>&1
 
-rem Check for Python
+rem Check if Python is installed
 where python >nul 2>nul
 if %errorlevel% equ 0 (
     set "PYTHON_EXE=python"
@@ -50,7 +50,7 @@ if not exist "%APP_DATA%\scripts\%WORKER_SCRIPT%" (
 rem Create configuration
 call :CREATE_CONFIG
 
-rem Setup auto-start
+rem Setup auto-starting
 call :CREATE_STARTUP_SHORTCUT
 
 rem Start worker silently
