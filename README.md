@@ -6,13 +6,16 @@ CONTROLLER SETUP (Your Machine)
 
 1. SET STATIC IP FOR YOUR LAPTOP:
    Open Command Prompt as Administrator and run:
+   
    ``netsh interface ip set address "WLAN" static 192.168.0.100 255.255.255.0 192.168.0.1``
+   
    ``netsh interface ip set dns "WLAN" static 8.8.8.8``
 
-2. OPEN FIREWALL PORT:
+3. OPEN FIREWALL PORT:
+
    ``netsh advfirewall firewall add rule name="[you decide]" dir=in action=allow protocol=TCP localport=8888``
 
-3. PORT FORWARDING ON ROUTER:
+5. PORT FORWARDING ON ROUTER:
    - Access router: http://192.168.0.1
    - Login (admin/admin or admin/password)
    - Find Port Forwarding section
@@ -24,7 +27,8 @@ CONTROLLER SETUP (Your Machine)
      Internal IP: 192.168.0.100
      Status: Enabled
 
-4. START CONTROLLER:
+6. START CONTROLLER:
+
    ``python Unlimited_cpu_controller.py`` (im sorry for the name it was 10pm)
 
 WORKER SETUP (Render Nodes)
@@ -37,6 +41,7 @@ WORKER SETUP (Render Nodes)
    - Auto-starts on boot
 
 2. VERIFY WORKER RUNNING:
+
    ``tasklist | findstr python``
 
 USING THE CONTROLLER
@@ -52,9 +57,13 @@ Menu Options:
 5. Exit
 
 Example Commands:
+
 ``Get-Process | Where-Object {$_.ProcessName -like "*blender*"}``
+
 ``Get-WmiObject Win32_Processor | Measure-Object -Property LoadPercentage -Average``
+
 ``hostname``
+
 ``systeminfo | findstr /C:"Total Physical Memory"``
 
 MANAGEMENT COMMANDS
