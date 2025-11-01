@@ -78,12 +78,6 @@ If workers won't connect:
 3. Confirm firewall allows the port
 4. Workers retry every 30 seconds automatically
 
-UNINSTALL
----------
-
-Run uninstaller.bat on worker machines
-Removes all files and startup entries
-
 SECURITY
 --------
 
